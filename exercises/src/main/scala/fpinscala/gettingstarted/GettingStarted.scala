@@ -13,8 +13,31 @@ object MyModule {
     msg.format(x, abs(x))
   }
 
-  def main(args: Array[String]): Unit =
+  def main(args: Array[String]): Unit = {
     println(formatAbs(-42))
+    println(formatFib(0))
+    println(formatFib(1))
+    println(formatFib(2))
+    println(formatFib(3))
+    println(formatFib(4))
+    println(formatFib(5))
+    println(formatFib(6))
+    println(formatFib(7))
+    println(formatFib(8))
+    println(formatFib(9))
+    println(formatFib(10))
+    println(formatFib(11))
+    println(formatFib(12))
+    println(formatFib(13))
+    println(formatFib(14))
+    println(formatFib(15))
+    println(formatFib(16))
+    println(formatFib(17))
+    println(formatFib(18))
+    println(formatFib(19))
+    println(formatFib(20))
+//    println(formatFib(200))
+  }
 
   // A definition of factorial, using a local, tail recursive function
   def factorial(n: Int): Int = {
@@ -35,8 +58,21 @@ object MyModule {
   }
 
   // Exercise 1: Write a function to compute the nth fibonacci number
+  def fib(n: Int): Int = {
+    def add(n1: Int, n2: Int): Int =
+      reduce(n1) + reduce(n2)
 
-  def fib(n: Int): Int = ???
+    def reduce(n: Int): Int =
+      if (n <= 0) 0
+      else if (n == 2 || n == 1) 1
+      else add(n - 1, n - 2)
+
+    reduce(n)
+  }
+
+  private def formatFib(n: Int) = {
+    "The fibonacci of %d is %d.".format(n, fib(n))
+  }
 
   // This definition and `formatAbs` are very similar..
   private def formatFactorial(n: Int) = {
