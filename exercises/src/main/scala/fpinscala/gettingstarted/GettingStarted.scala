@@ -36,7 +36,7 @@ object MyModule {
     println(formatFib(18))
     println(formatFib(19))
     println(formatFib(20))
-//    println(formatFib(200))
+    println(formatFib(30))
   }
 
   // A definition of factorial, using a local, tail recursive function
@@ -59,15 +59,26 @@ object MyModule {
 
   // Exercise 1: Write a function to compute the nth fibonacci number
   def fib(n: Int): Int = {
-    def add(n1: Int, n2: Int): Int =
-      reduce(n1) + reduce(n2)
+    @annotation.tailrec
+    def go(n: Int, prev: Int, cur: Int): Int = {
+      if (n == 0) prev
+      else go(n - 1, cur, prev + cur)
+    }
 
-    def reduce(n: Int): Int =
-      if (n <= 0) 0
-      else if (n == 2 || n == 1) 1
-      else add(n - 1, n - 2)
+    go(n, 0, 1)
 
-    reduce(n)
+    // Playing this out...
+    // go(10, 0, 1)
+    // go(9, 1, 1)
+    // go(8, 1, 2)
+    // go(7, 2, 3)
+    // go(6, 3, 5)
+    // go(5, 5, 8)
+    // go(4, 8, 13)
+    // go(3, 13, 21)
+    // go(2, 21, 34)
+    // go(1, 34, 55)
+    // go(0, 55, 89) // return 55 because n == 0
   }
 
   private def formatFib(n: Int) = {
