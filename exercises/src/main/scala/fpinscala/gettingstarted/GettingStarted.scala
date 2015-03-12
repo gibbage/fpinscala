@@ -122,14 +122,12 @@ object MonomorphicBinarySearch {
 object PolymorphicFunctions {
 
   def main(args: Array[String]): Unit = {
-    println(isSorted(Array(1, 2, 3, 4), (x: Int, y: Int) => x < y))             // true
-    println(isSorted(Array(1, 3, 2, 4), (x: Int, y: Int) => x < y))             // false
-    println(isSorted(Array(4, 3, 2, 1), (x: Int, y: Int) => x < y))             // false
-    println(isSorted(Array(4, 3, 2, 1), (x: Int, y: Int) => x > y))             // true
-    println(isSorted(Array("a", "b", "c"), (x: String, y: String) => x < y))    // true
-    println(isSorted(Array("a", "b", "d"), (x: String, y: String) => x < y))    // true
-    println(isSorted(Array("a", "b", "a"), (x: String, y: String) => x < y))    // false
-    println(isSorted(Array("c", "b", "a"), (x: String, y: String) => x > y))    // true
+    println(isSorted(Array(1, 2, 3, 4), (x: Int, y: Int) => x > y))             // true
+    println(isSorted(Array(1, 3, 2, 4), (x: Int, y: Int) => x > y))             // false
+    println(isSorted(Array(4, 3, 2, 1), (x: Int, y: Int) => x > y))             // false
+    println(isSorted(Array("a", "b", "c"), (x: String, y: String) => x > y))    // true
+    println(isSorted(Array("a", "b", "d"), (x: String, y: String) => x > y))    // true
+    println(isSorted(Array("a", "b", "a"), (x: String, y: String) => x > y))    // false
   }
 
   // Here's a polymorphic version of `binarySearch`, parameterized on
@@ -154,13 +152,13 @@ object PolymorphicFunctions {
   // an `Array[A]` is sorted
   def isSorted[A](as: Array[A], gt: (A,A) => Boolean): Boolean = {
     @annotation.tailrec
-    def go(n: Int, sorted: Boolean): Boolean = {
-      val next = n + 1
-      if (!sorted || next >= as.length) sorted
-      else go(next, gt(as(n), as(next)))
+    def go(n: Int): Boolean = {
+      if (n >= as.length - 1) true          // If we got to the end of the array then its sorted
+      else if (gt(as(n), as(n + 1))) false  // Bomb out if this item is greater than the next
+      else go(n + 1)                        // This item was not the last, and smaller than the next. Move along.
     }
 
-    go(0, sorted = true)
+    go(0)
   }
 
   // Polymorphic functions are often so constrained by their type
