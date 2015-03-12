@@ -8,37 +8,6 @@ object MyModule {
     if (n < 0) -n
     else n
 
-  private def formatAbs(x: Int) = {
-    val msg = "The absolute value of %d is %d"
-    msg.format(x, abs(x))
-  }
-
-  def main(args: Array[String]): Unit = {
-    println(formatAbs(-42))
-    println(formatFib(0))
-    println(formatFib(1))
-    println(formatFib(2))
-    println(formatFib(3))
-    println(formatFib(4))
-    println(formatFib(5))
-    println(formatFib(6))
-    println(formatFib(7))
-    println(formatFib(8))
-    println(formatFib(9))
-    println(formatFib(10))
-    println(formatFib(11))
-    println(formatFib(12))
-    println(formatFib(13))
-    println(formatFib(14))
-    println(formatFib(15))
-    println(formatFib(16))
-    println(formatFib(17))
-    println(formatFib(18))
-    println(formatFib(19))
-    println(formatFib(20))
-    println(formatFib(30))
-  }
-
   // A definition of factorial, using a local, tail recursive function
   def factorial(n: Int): Int = {
     @annotation.tailrec
@@ -81,14 +50,45 @@ object MyModule {
     // go(0, 55, 89) // return 55 because n == 0
   }
 
-  private def formatFib(n: Int) = {
-    "The fibonacci of %d is %d.".format(n, fib(n))
+  def main(args: Array[String]): Unit = {
+    println(formatAbs(-42))
+    println(formatFib(0))
+    println(formatFib(1))
+    println(formatFib(2))
+    println(formatFib(3))
+    println(formatFib(4))
+    println(formatFib(5))
+    println(formatFib(6))
+    println(formatFib(7))
+    println(formatFib(8))
+    println(formatFib(9))
+    println(formatFib(10))
+    println(formatFib(11))
+    println(formatFib(12))
+    println(formatFib(13))
+    println(formatFib(14))
+    println(formatFib(15))
+    println(formatFib(16))
+    println(formatFib(17))
+    println(formatFib(18))
+    println(formatFib(19))
+    println(formatFib(20))
+    println(formatFib(30))
+  }
+
+  private def formatAbs(x: Int) = {
+    val msg = "The absolute value of %d is %d"
+    msg.format(x, abs(x))
   }
 
   // This definition and `formatAbs` are very similar..
   private def formatFactorial(n: Int) = {
     val msg = "The factorial of %d is %d."
     msg.format(n, factorial(n))
+  }
+
+  private def formatFib(n: Int) = {
+    "The fibonacci of %d is %d.".format(n, fib(n))
   }
 
   // We can generalize `formatAbs` and `formatFactorial` to
