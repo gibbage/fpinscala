@@ -51,44 +51,9 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
-    println(formatAbs(-42))
-    println(formatFib(0))
-    println(formatFib(1))
-    println(formatFib(2))
-    println(formatFib(3))
-    println(formatFib(4))
-    println(formatFib(5))
-    println(formatFib(6))
-    println(formatFib(7))
-    println(formatFib(8))
-    println(formatFib(9))
-    println(formatFib(10))
-    println(formatFib(11))
-    println(formatFib(12))
-    println(formatFib(13))
-    println(formatFib(14))
-    println(formatFib(15))
-    println(formatFib(16))
-    println(formatFib(17))
-    println(formatFib(18))
-    println(formatFib(19))
-    println(formatFib(20))
-    println(formatFib(30))
-  }
-
-  private def formatAbs(x: Int) = {
-    val msg = "The absolute value of %d is %d"
-    msg.format(x, abs(x))
-  }
-
-  // This definition and `formatAbs` are very similar..
-  private def formatFactorial(n: Int) = {
-    val msg = "The factorial of %d is %d."
-    msg.format(n, factorial(n))
-  }
-
-  private def formatFib(n: Int) = {
-    "The fibonacci of %d is %d.".format(n, fib(n))
+    println(formatResult("absolute value", -42, abs))
+    println(formatResult("factorial", 7, factorial))
+    println(formatResult("fibonacci", 10, fib))
   }
 
   // We can generalize `formatAbs` and `formatFactorial` to
