@@ -8,14 +8,6 @@ object MyModule {
     if (n < 0) -n
     else n
 
-  private def formatAbs(x: Int) = {
-    val msg = "The absolute value of %d is %d"
-    msg.format(x, abs(x))
-  }
-
-  def main(args: Array[String]): Unit =
-    println(formatAbs(-42))
-
   // A definition of factorial, using a local, tail recursive function
   def factorial(n: Int): Int = {
     @annotation.tailrec
@@ -35,13 +27,33 @@ object MyModule {
   }
 
   // Exercise 1: Write a function to compute the nth fibonacci number
+  def fib(n: Int): Int = {
+    @annotation.tailrec
+    def go(n: Int, prev: Int, cur: Int): Int = {
+      if (n == 0) prev
+      else go(n - 1, cur, prev + cur)
+    }
 
-  def fib(n: Int): Int = ???
+    go(n, 0, 1)
 
-  // This definition and `formatAbs` are very similar..
-  private def formatFactorial(n: Int) = {
-    val msg = "The factorial of %d is %d."
-    msg.format(n, factorial(n))
+    // Playing this out...
+    // go(10, 0, 1)
+    // go(9, 1, 1)
+    // go(8, 1, 2)
+    // go(7, 2, 3)
+    // go(6, 3, 5)
+    // go(5, 5, 8)
+    // go(4, 8, 13)
+    // go(3, 13, 21)
+    // go(2, 21, 34)
+    // go(1, 34, 55)
+    // go(0, 55, 89) // return 55 because n == 0
+  }
+
+  def main(args: Array[String]): Unit = {
+    println(formatResult("absolute value", -42, abs))
+    println(formatResult("factorial", 7, factorial))
+    println(formatResult("fibonacci", 10, fib))
   }
 
   // We can generalize `formatAbs` and `formatFactorial` to
