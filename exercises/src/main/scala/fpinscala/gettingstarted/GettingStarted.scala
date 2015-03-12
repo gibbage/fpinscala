@@ -164,6 +164,9 @@ object PolymorphicFunctions {
   // Polymorphic functions are often so constrained by their type
   // that they only have one implementation! Here's an example:
 
+  // Sharon explained this to me a bit. Its the I have an add(a, b)
+  // and want an add4(b) function. I think it will become clearer later.
+
   def partial1[A,B,C](a: A, f: (A,B) => C): B => C =
     (b: B) => f(a, b)
 
