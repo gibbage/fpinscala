@@ -35,3 +35,7 @@ val drop7 = List.drop(List(1, 2, 3, 4, 5), 7)
 val dropWhile0 = List.dropWhile(List(1, 2, 3), (x: Int) => x != 2)
 val dropWhile1 = List.dropWhile(List(1, 2, 3), (x: Int) => x < 3)
 val dropWhile2 = List.dropWhile(List(1, 2, 3), (x: Int) => x < 10)
+
+val init0 = List.init(List(1, 2, 3))
+val init1 = List.init(List(1, 2, 3, 4, 5))
+val init2 = List.init(List(1, 2))
