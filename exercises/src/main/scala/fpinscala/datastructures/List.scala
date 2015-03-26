@@ -34,6 +34,8 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(h,t) => Cons(h, append(t, a2))
     }
 
+  // They don't have to be different types. This works fine too:
+  // def foldRight[A](as: List[A], z: A)(f: (A, A) => A): A = // Utility functions
   def foldRight[A,B](as: List[A], z: B)(f: (A, B) => B): B = // Utility functions
     as match {
       case Nil => z
@@ -42,6 +44,9 @@ object List { // `List` companion object. Contains functions for creating and wo
   
   def sum2(ns: List[Int]) = 
     foldRight(ns, 0)((x,y) => x + y)
+
+  def sum3(ns: List[Int]) =
+    foldRight(ns, "Zero")((x, y) => x + " + " + y)
   
   def product2(ns: List[Double]) = 
     foldRight(ns, 1.0)(_ * _) // `_ * _` is more concise notation for `(x,y) => x * y`; see sidebar
