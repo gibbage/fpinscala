@@ -86,3 +86,36 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def map[A,B](l: List[A])(f: A => B): List[B] = sys.error("todo")
 }
+
+object ListTesting {
+  def main (args: Array[String] ): Unit = {
+    println("goodTail: " + List.tail(List(1, 2, 3)))
+    //println("badTail: " + List.tail(List()))
+    println("goodSetHead: " + List.setHead(List(2, 3, 4), 1))
+    //println("badSetHead1: " + List.setHead(List(), 1))
+    //println("badSetHead2: " + List.setHead(List(2, 3, 4), Nil))
+
+    println("drop0: " + List.drop(List(1, 2, 3, 4, 5), 0))
+    println("drop1: " + List.drop(List(1, 2, 3, 4, 5), 1))
+    println("drop2: " + List.drop(List(1, 2, 3, 4, 5), 2))
+    println("drop3: " + List.drop(List(1, 2, 3, 4, 5), 3))
+    println("drop4: " + List.drop(List(1, 2, 3, 4, 5), 4))
+    println("drop5: " + List.drop(List(1, 2, 3, 4, 5), 5))
+    println("drop6: " + List.drop(List(1, 2, 3, 4, 5), 6))
+    println("drop7: " + List.drop(List(1, 2, 3, 4, 5), 7))
+    println("dropWhile0: " + List.dropWhile(List(1, 2, 3), (x: Int) => x != 2))
+    println("dropWhile1: " + List.dropWhile(List(1, 2, 3), (x: Int) => x < 3))
+    println("dropWhile2: " + List.dropWhile(List(1, 2, 3), (x: Int) => x < 10))
+
+    println("init0: " + List.init(List(1, 2, 3)))
+    println("init1: " + List.init(List(1, 2, 3, 4, 5)))
+    println("init2: " + List.init(List(1, 2)))
+
+    println("sum0: " + List.sum(List(1,2,3)))
+    println("sum1: " + List.sum2(List(1,2,3)))
+    println("stringSum0: " + List.sum3(List(1,2,3))) // See what we can do with different type :)
+    println("product0: " + List.product(List(1,2,3)))
+    println("product1: " + List.product2(List(1,2,3)))
+    println("subs0: " + List.foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_)))
+  }
+}
