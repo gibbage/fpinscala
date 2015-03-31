@@ -116,6 +116,23 @@ object ListTesting {
     println("stringSum0: " + List.sum3(List(1,2,3))) // See what we can do with different type :)
     println("product0: " + List.product(List(1,2,3)))
     println("product1: " + List.product2(List(1,2,3)))
+
     println("subs0: " + List.foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_)))
+
+    // Trace the problem - should all println the same output.
+    println("trace0: " + List.foldRight(List(1,2,3), Nil:List[Int])(Cons(_,_)))
+    println("trace0: " + Cons(1, List.foldRight(Cons(2, Cons(3, Nil)), Nil:List[Int])(Cons(_, _))))
+    println("trace0: " + Cons(1, Cons(2, List.foldRight(Cons(3, Nil), Nil:List[Int])(Cons(_, _)))))
+    println("trace0: " + Cons(1, Cons(2, Cons(3, List.foldRight(Nil, Nil:List[Int])(Cons(_, _))))))
+    println("trace0: " + Cons(1, Cons(2, Cons(3, Nil))))
+
+    // For practice, lets also trace the previous exercise:
+    println("trace1: " + (List.foldRight(List(1, 2, 3), 0)((x, y) => x + y)))
+    println("trace1: " + (List.foldRight(Cons(1, Cons(2, Cons(3, Nil))), 0)((x, y) => x + y)))
+    println("trace1: " + (1 + (List.foldRight(Cons(2, Cons(3, Nil)), 0)((x,y) => x + y))))
+    println("trace1: " + (1 + (2 + (List.foldRight(Cons(3, Nil), 0)((x,y) => x + y)))))
+    println("trace1: " + (1 + (2 + (3 + (List.foldRight(Nil:List[Int], 0)((x,y) => x + y))))))
+    println("trace1: " + (1 + (2 + (3 + (0)))))
+    println("trace1: " + (6))
   }
 }
